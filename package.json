@@ -4,18 +4,23 @@
     "description": "A DeFi banking application",
     "main": "truffle-config.js",
     "scripts": {
-      "test": "truffle test",
-      "compile": "truffle compile",
-      "migrate": "truffle migrate"
+        "test": "truffle test",
+        "compile": "truffle compile",
+        "migrate": "truffle migrate"
     },
     "dependencies": {
-      "core-js": "^3.38.1",
-      "regenerator-runtime": "^0.14.1"
+        "core-js": "^3.38.1",
+        "regenerator-runtime": "^0.14.1"
     },
     "devDependencies": {
-      "truffle": "^5.11.5"
+        "truffle": "^5.11.5"
     },
-    "keywords": ["defi", "ethereum", "solidity", "truffle"],
+    "keywords": [
+        "defi",
+        "ethereum",
+        "solidity",
+        "truffle"
+    ],
     "author": "Your Name",
     "license": "MIT"
-  }
+}
