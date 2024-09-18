@@ -33,7 +33,8 @@ contract DecentralBank{
         if(!hasStaked[msg.sender]){
             stakers.push(msg.sender);   
         }
-
+        
+        //Update balances
         isStaking[msg.sender] = true;
         hasStaked[msg.sender] = true;
     }
