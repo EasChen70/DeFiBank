@@ -73,8 +73,33 @@ contract('DecentralBank', ([owner, customer]) =>{
             result = await decentralBank.isStaking(customer)
             assert.equal(result.toString(), 'true', 'customer staking status is true after staking')
 
+            //Issue tokens
+            await decentralBank.issueTokens({from: owner})
+
+            //Check only owner can issue
+            try {
+                await decentralBank.issueTokens({ from: customer });
+                assert.fail('Expected revert not received');
+            } catch (error) {
+                assert(error.message.includes('caller must be owner'), 'Expected "caller must be owner" revert');
+            }
+          
+            // Unstaked tokens
+            await decentralBank.unstakeTokens({from: customer});
+
+            // Check Unstaking balances
+            result = await tether.balanceOf(customer)
+            assert.equal(result.toString(), tokens('100'))
+
+            result = await tether.balanceOf(decentralBank.address)
+            assert.equal(result.toString(), tokens('0'))
+
+            result = await decentralBank.isStaking(customer)
+            assert.equal(result.toString(), 'false')
+
         })
     })
+
 })
 
 
